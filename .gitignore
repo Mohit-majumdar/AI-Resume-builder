@@ -1,0 +1,52 @@
+# Byte-compiled Python files
+*.py[cod]
+
+# Log files
+*.log
+
+# Database files
+*.db
+*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+.env
+# IDE files
+.vscode/
+*.idea/
+*.pycharm/
+
+# Virtual environment files
+env/
+venv/
+.venv/
+*.egg-info/
+
+# Distribution files
+dist/
+build/
+*.egg
+
+# Documentation files
+docs/_build/
+
+# Test files
+.tox/
+.coverage
+.coverage.*
+*.cover
+
+# Python package files
+*.dist-info/
+*.egg-info/
+
+# Miscellaneous
+*.pid
+*.seed
+*.tmp
+*.bak
+*.swp
+*.swo
+
+__pycache*
