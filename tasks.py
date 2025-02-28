@@ -79,7 +79,7 @@ async def get_job_desc_from_text(html: str) -> dict:
 
     
 
-    res = llm.process_response(prompt, input=html)
+    res = await llm.process_response(prompt, input=html)
     return res
 
 async def get_altered_summary(resume_summary:str, job_description:str):
@@ -87,15 +87,15 @@ async def get_altered_summary(resume_summary:str, job_description:str):
     prompt = ChatPromptTemplate.from_messages(
         summary_msg
     )
-    return llm.process_response(prompt, resume_summary=resume_summary,job_description=job_description)
+    return await llm.process_response(prompt, resume_summary=resume_summary,job_description=job_description)
 
 
 async def create_resume_markdowon(data:Dict):
-    llm = CreateLLM.create_model(LLM_MODEL)
+    llm = CreateLLM.create_model(LLMmodels.OpenRouterLLMLlama.name)
     prompt = ChatPromptTemplate.from_messages(
         build_resume_system_message
     )
-    return llm.process_response(prompt, data=data)
+    return await llm.process_response(prompt,build_resume=True, data=data)
 
 async def get_content(url:str):
     from playwright.async_api import async_playwright

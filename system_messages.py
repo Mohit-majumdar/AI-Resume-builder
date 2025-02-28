@@ -85,31 +85,35 @@ summary_msg = [
 ]
 
 
-build_resume_system_message = [("system",
-                                 """You are a resume builder. The user will provide all the required information, 
-                                and your task is to generate a well-structured, ATS-friendly resume using the given information.
-                                
-                                
-                                Ensure that the resume is visually appealing and easy to read.
-
-                                output should be in below format, key should be in double quotes
-                                <output>
-                                {{"resume_markdown": "markdown content of resume"}}
-                                </output>
-                                
-                                
-                                """),
-                                ("human",
-                               
-                                """Build a resume using the provided summary and skills. 
-                               The resume should be well-structured and visually appealing.
-                                
-                               Ensure that the resume is ATS-friendly and easy to read.
-
-                               User Input: {data}
-                               
-                               output should be in below format, key should be in double quotes
-                                <output>
-                                {{"resume_markdown": "markdown content of resume"}}
-                                </output>
-                               """)]
+build_resume_system_message = [
+    (
+        "system",
+        """You are a resume builder. The user will provide all the required information, and your task is to generate a well-structured, ATS-friendly resume using the given information.
+        
+        Ensure that the resume is visually appealing and easy to read.
+        
+        Provide the output in the following format with the key in double quotes in valid Json Format:
+        
+        {{
+            "resume_markdown": "markdown content of resume"
+        }}
+        
+        """,
+    ),
+    (
+        "human",
+        """Build a resume using the provided summary and skills. The resume should be well-structured and visually appealing.
+        
+        Ensure that the resume is ATS-friendly and easy to read.
+        
+        User Input: {data}
+        
+        Provide the output in the following format with the key in double quotes in valid json format:
+        
+        {{
+            "resume_markdown": "markdown content of resume"
+        }}
+        
+        """,
+    ),
+]

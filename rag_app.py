@@ -19,6 +19,9 @@ class ResumeRag:
     async def clean_markdown(markdown_text):
         text = re.sub(r'["""]', '"', markdown_text)
         text = re.sub(r"[''']", "'", text)
+
+        text = re.sub(r'(\w)\*(?!\*)', r'\1', text)
+
     
         # Ensure proper spacing after list markers
         text = re.sub(r'^\s*[-*+](?!\s)', r'- ', text, flags=re.MULTILINE)
@@ -32,8 +35,8 @@ class ResumeRag:
         return text
     @staticmethod
     async def markdown_to_pdf(markdown_text,file_path):
-        clened_markdown = await ResumeRag.clean_markdown(markdown_text)
-        html_text = markdown.markdown(clened_markdown)
+        cleaned_markdown = await ResumeRag.clean_markdown(markdown_text)
+        html_text =  markdown.markdown(cleaned_markdown, extensions=['extra'])
 
         html_template = f"""
             <!DOCTYPE html>
@@ -45,7 +48,7 @@ class ResumeRag:
                             font-family: Arial, Helvetica, sans-serif;
                             line-height: 1.5;
                             margin: 10px; 
-                            font-size: 11pt;
+                            font-size: 10pt;
                             color: #000000;
                         }}
                         h1, h2, h3, h4, h5, h6 {{ 
