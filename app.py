@@ -212,4 +212,4 @@ if __name__ == "__main__":
         main()
     except Exception as e:
         print(e)
-        st.error(f"We are sorry, we are overwhelm with requests. Please try again later. ")
+        st.error(f"We are sorry, we are overwhelme with requests. Please try again later. ")

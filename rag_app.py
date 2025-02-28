@@ -73,8 +73,8 @@ class ResumeRag:
                 </head>
                 <body>
                     {html_text}
-        </body>
-        </html>
+                </body>
+                </html>
             """ 
         
         HTML(string=html_template).write_pdf(file_path,stylesheets=[],optimize_size=("fonts","images"))
