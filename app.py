@@ -27,8 +27,8 @@ def main():
     st.title("📄 Resume Analyzer - RAG System")
     st.markdown(
         """
-    This application uses Asynchronous Retrieval-Augmented Generation (RAG) to analyze resumes.
-    Upload PDF resumes, search through them, and get insights from the data.
+    Build your ATS friendly Resume with AI. 
+    Upload PDF resumes, Give your job description , and get ATS friendly resume for applying Job.
     """
     )
 
