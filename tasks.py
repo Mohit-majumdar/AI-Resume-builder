@@ -91,7 +91,8 @@ async def get_altered_summary(resume_summary:str, job_description:str):
 
 
 async def create_resume_markdowon(data:Dict):
-    llm = CreateLLM.create_model(LLMmodels.OpenRouterLLMLlama.name)
+    llm = CreateLLM.create_model(LLM_MODEL
+    )
     prompt = ChatPromptTemplate.from_messages(
         build_resume_system_message
     )
