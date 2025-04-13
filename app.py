@@ -3,7 +3,7 @@ import os
 import streamlit as st
 import asyncio
 
-from tasks import get_job_description, get_altered_summary, create_resume_markdowon
+from tasks import get_job_description, get_altered_summary, create_resume_markdowon,get_email_message
 from rag_app import ResumeRag
 
 
@@ -134,6 +134,15 @@ def main():
                                 st.warning("### Consider adding these keywords")
                                 for keyword, freq in analysis['missing']:
                                         st.write(f"- **{keyword}** (appears {freq} times in job description)")
+                                
+                                email_message = await get_email_message(
+                                    st.session_state.resume_data.get("professional_summary", ""),
+                                    st.session_state.job_desc,
+                                    st.session_state.skills,
+                                )
+                                st.session_state.email_message = email_message.get("email", "")
+                                st.write("### Email Message")
+                                st.write(st.session_state.email_message)
 
                 asyncio.run(get_data())
 

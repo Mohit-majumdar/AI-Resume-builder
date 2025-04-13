@@ -11,7 +11,7 @@ import asyncio
 from decouple import config
 from dotenv import load_dotenv
 from base_models import CreateLLM,LLMmodels
-from system_messages import job_desc_system_message,summary_msg,build_resume_system_message
+from system_messages import job_desc_system_message,summary_msg,build_resume_system_message,email_summary_message
 
 load_dotenv()
 
@@ -109,6 +109,12 @@ async def get_content(url:str):
         return content
 
 
+async def get_email_message(resume_summary:str, job_description:str,skills:list[str]):
+    llm = CreateLLM.create_model(LLM_MODEL)
+    prompt = ChatPromptTemplate.from_messages(
+        email_summary_message
+    )
+    return await llm.process_response(prompt, resume_summary=resume_summary,job_description=job_description,skills=skills)
 
 
 

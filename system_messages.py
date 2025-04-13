@@ -117,3 +117,34 @@ build_resume_system_message = [
         """,
     ),
 ]
+
+
+email_summary_message = [
+    (
+        "system",
+        "You are an expert in writing emails. The user will provide a summary and job description and users skills, and your task is to generate a well-structured email  using the given information. Ensure that the email is professional and clear. Provide the output in the following format with the key in double quotes in valid JSON format: "
+        """
+        Example:
+        **Job Description:** We are looking for a senior full-stack developer with expertise in Python, Flask, Angular or React, AWS, and DevOps. This role offers remote work flexibility, opportunities to work with cutting-edge technologies, a growth-oriented environment, competitive compensation, and the chance to contribute to innovative projects.
+        **Resume Summary:** Experienced Python Developer with 3+ years of expertise in software development and data analytics. Proficient in Python, Django, FastApi and MERN stack with a strong focus on creating scalable, efficient solutions. Demonstrated ability to collaborate across teams, automate workflows, and extract actionable insights from complex datasets. Skilled in delivering data-driven solutions using advanced analytics and predictive modeling.
+        **Skills:** Python, Django, FastAPI, MERN stack, AWS, DevOps
+        **Expected Output (JSON format):** email: "
+        Hello [Hiring Manager's Name],
+        I hope this message finds you well. I am writing to express my interest in the senior full-stack developer position at [Company Name]. With over 3 years of experience in Python, Django, FastAPI, and the MERN stack, I am confident in my ability to contribute effectively to your team.
+        I have a strong background in building scalable solutions across both frontend and backend systems. My proficiency in AWS cloud services and DevOps practices has enabled me to automate workflows and optimize deployments successfully. I am also skilled in integrating data-driven insights into development processes, which has allowed me to collaborate cross-functionally and deliver innovative projects.
+        I am particularly excited about the opportunity to work with cutting-edge technologies like Angular/React and Flask in a remote-first environment. I am passionate about adopting new tools and methodologies to enhance productivity and drive results.
+        I would love the chance to discuss how my skills and experiences align with the needs of your team. Thank you for considering my application. I look forward to the opportunity to speak with you.
+        Best regards,
+        [Your Name]
+        [Your LinkedIn Profile or Portfolio Link]
+        [Your Contact Information]
+        """
+        "{{'email': 'email message content'}}",
+    ),
+    (
+        "human",
+        "Write an email  using the provided summary and job description. The email should be professional and clear. User Input :- resume summary: {resume_summary}, job description: {job_description} , skills: {skills}"
+        
+        "Provide the output in the following format with the key in double quotes in valid JSON format: {{'email': 'email  content'}}",
+    ),
+]
