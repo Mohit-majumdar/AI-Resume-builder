@@ -2,11 +2,26 @@ import tempfile
 import os
 import streamlit as st
 import asyncio
-
+from streamlit.components.v1 import html
 from tasks import get_job_description, get_altered_summary, create_resume_markdowon,get_email_message
 from rag_app import ResumeRag
+from decouple import config
 
+GTAG = config("GTAG")
 
+GA_CODE = f"""
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GTAG}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GTAG}');
+</script>
+"""
+
+# Inject GA code into the Streamlit app
+html(GA_CODE)
 async def run_async_functions_in_streamlit(function, *args, **kwargs):
     loop = asyncio.get_event_loop()
     return await function(*args, **kwargs)
