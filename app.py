@@ -28,6 +28,7 @@ async def run_async_functions_in_streamlit(function, *args, **kwargs):
 
 
 def main():
+    
     st.set_page_config(page_title="Resume Analyzer", page_icon="📄", layout="wide")
 
     if "rag" not in st.session_state:
@@ -38,7 +39,7 @@ def main():
     
     if "resume_markdown" not in st.session_state:
         st.session_state.resume_markdown = ""
-
+    html(GA_CODE)
     st.title("📄 Resume Analyzer - RAG System")
     st.markdown(
         """
